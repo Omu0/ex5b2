@@ -33,7 +33,7 @@
 	</div>
 	
 	<script>
-		function tempValidation(t,u){
+		function tempValidation(t){
 			if(isNaN(t)){
 					msg = "Please verify whether the temperature value is correct!!!";
 					alert(msg);
@@ -46,19 +46,10 @@
 			   }
 			   return true;
 		}
-	    $(document).ready(function(){
-			$("button").click(function(){
-			   var t = Number($('#temp').val());//celsius
-			   var u = $('#unit').val();
-			   
-			   var resTempVal = tempValidation(t,u);
-			   if(resTempVal == false){
-				return;
-			   }
-
-			   var t1;
-			   var u1;
-			   
+		function tempCal(t,u){
+			var t1;
+			var u1;
+			
 			   if(u == "F"){
 					t1 = t * (9/5) + 32;
 					u1 = "Fahrenheit";
@@ -70,7 +61,19 @@
                     u1 = "Réaumur";
 			   }
 			   
-			   alert("Temperature is "+t1+" in "+u1);
+			alert("Temperature is "+t1+" in "+u1);
+		}
+	    $(document).ready(function(){
+			$("button").click(function(){
+			   var t = Number($('#temp').val());//celsius
+			   var u = $('#unit').val();
+			   
+			   var resTempVal = tempValidation(t);
+			   if(resTempVal == false){
+				return;
+			   }
+
+			   var resTempCal = tempCal(t,u);
 			});
 		});
 	</script>
