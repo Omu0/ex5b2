@@ -61,7 +61,7 @@
                     u1 = "Réaumur";
 			   }
 			   
-			alert("Temperature is "+t1+" in "+u1);
+			return {"value" : t1, "unit" : u1};
 		}
 	    $(document).ready(function(){
 			$("button").click(function(){
@@ -74,6 +74,8 @@
 			   }
 
 			   var resTempCal = tempCal(t,u);
+			   var message = "Temperature is "+resTempCal.value+" in "+resTempCal.unit;
+			   $('#result').html(message);
 			});
 		});
 	</script>
